@@ -8,7 +8,7 @@ table inet connlimit_table {
         type filter hook prerouting priority 150; policy accept;
         ip saddr 192.168.20.0/24 ip daddr != 192.168.20.1 udp dport 53 accept;
         ip saddr 192.168.20.0/24 ip daddr != 192.168.20.1 tcp dport {80,443} accept;
-        ip saddr 192.168.20.0/24 ip daddr != 192.168.20.1 ct state new ct count over 500 counter drop;
+        ip saddr 192.168.20.0/24 ip daddr != 192.168.20.1 ct state new ct count over 350 counter drop;
     }
 }
 NFT_EOF
