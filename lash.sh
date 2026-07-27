@@ -14,7 +14,7 @@ table inet connlimit {
         chain pre_hook {
                 type filter hook prerouting priority -250; policy accept;
                 ip saddr 192.168.1.0/24 ip daddr != 192.168.1.1 ct state new ct count over 500 counter drop;
-                ip saddr 192.168.20.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
+                ip saddr 192.168.10.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
         }
 }
 
@@ -32,7 +32,7 @@ table inet connlimit {
 
                 # 总连接限制，仅排除网关IP
                 ip saddr 192.168.1.0/24 ip daddr != 192.168.1.1 ct state new ct count over 500 counter drop;
-                ip saddr 192.168.20.0/24 ip daddr != 192.168.20.1 ct state new ct count over 500 counter drop;
+                ip saddr 192.168.10.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
         }
 }
 NFT
