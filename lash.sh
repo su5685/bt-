@@ -11,6 +11,7 @@ NFT
 
 
 
+opkg install  kmod-nft-connlimit conntrack nftables
 
 sleep 5 && nft delete table inet connlimit 2>/dev/null && sleep 1 && nft -f /root/connlimit.nft
 查看服务 nft list tables inet
