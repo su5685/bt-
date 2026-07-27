@@ -10,6 +10,7 @@ NFT
 
 
 
+cat > /root/connlimit.nft <<'NFT'
 table inet connlimit {
         chain pre_hook {
                 type filter hook prerouting priority -250; policy accept;
@@ -17,7 +18,7 @@ table inet connlimit {
                 ip saddr 192.168.10.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
         }
 }
-
+NFT
 
 
 
