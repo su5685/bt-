@@ -2,12 +2,21 @@ cat > /root/connlimit.nft <<'NFT'
 table inet connlimit {
         chain forward_hook {
                 type filter hook forward priority -1000; policy accept;
-                ip saddr 192.168.1.0/24 ip daddr != 192.168.1.1 ct state new ct count over 400 counter drop;
-                ip saddr 192.168.10.0/24 ip daddr != 192.168.10.1 ct state new ct count over 400 counter drop;
+                ip saddr 192.168.1.0/24 ip daddr != 192.168.1.1 ct state new ct count over 500 counter drop;
+                ip saddr 192.168.10.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
         }
 }
 NFT
 
+
+
+table inet connlimit {
+        chain pre_hook {
+                type filter hook prerouting priority -250; policy accept;
+                ip saddr 192.168.1.0/24 ip daddr != 192.168.1.1 ct state new ct count over 500 counter drop;
+                ip saddr 192.168.20.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
+        }
+}
 
 
 
