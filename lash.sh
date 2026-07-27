@@ -13,7 +13,7 @@ NFT
 
 
 sleep 5 && nft delete table inet connlimit 2>/dev/null && sleep 1 && nft -f /root/connlimit.nft
-
+查看服务 nft list tables inet
 # 查看所有forward钩子
 nft -e list ruleset | grep -E "hook forward"
 # 查看完整规则
