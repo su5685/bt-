@@ -6,6 +6,9 @@ table inet connlimit {
                 ip saddr 192.168.10.0/24 ip daddr != 192.168.10.1 ct state new ct count over 500 counter drop;
         }
 }
+NFT
+
+
 
 # 必备插件
 # kmod-nft-connlimit conntrack nftables
@@ -27,5 +30,3 @@ table inet connlimit {
 
 # 查看所有forward钩子
 # nft -e list ruleset | grep -E "hook forward"
-
-NFT
